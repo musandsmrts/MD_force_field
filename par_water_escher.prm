@@ -1,0 +1,32 @@
+* Parameter information for water
+
+!references
+!
+!TIP3P water model 
+!
+!W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
+!M.L. Klein; "Comparison of simple potential functions for 
+!simulating liquid water", J. Chem. Phys. 79 926-935 (1983). 
+
+ATOMS ! What is the purpose of this label? Is it necessary? Can we include in 
+      ! accompanying topology file?
+
+MASS  1   HT    1.00800 ! TIP3P WATER HYDROGEN
+MASS  2   OT   15.99940 ! TIP3P WATER OXYGEN
+
+BONDS
+!
+!V(bond) = Kb(b - b0)**2
+!
+!Kb: kcal/mole/A**2
+!b0: A
+!
+!atom type Kb          b0
+!
+HT    HT      0.0       1.5139  ! from TIP3P geometry (for SHAKE w/PARAM)
+HT    OT    450.0       0.9572  ! from TIP3P geometry
+
+NONBONDED
+!TIP3P LJ parameters
+HT       0.0       -0.046     0.2245
+OT       0.0       -0.1521    1.7682
