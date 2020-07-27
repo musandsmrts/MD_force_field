@@ -27,6 +27,12 @@ HT    HT      0.0       1.5139  ! from TIP3P geometry (for SHAKE w/PARAM)
 HT    OT    450.0       0.9572  ! from TIP3P geometry
 
 NONBONDED
+!
+!V(Lennard-Jones) = Eps,i,j[(Rmin,i,j/ri,j)**12 - 2(Rmin,i,j/ri,j)**6]
+!epsilon: kcal/mole, Eps,i,j = sqrt(eps,i * eps,j)
+!Rmin/2: A, Rmin,i,j = Rmin/2,i + Rmin/2,j
+!
+!atom ignored       epsilon   Rmin/2
 !TIP3P LJ parameters
 HT       0.0       -0.046     0.2245
 OT       0.0       -0.1521    1.7682
