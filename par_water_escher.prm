@@ -25,6 +25,21 @@ MASS  3   SOD  22.98977 ! Sodium Ion
 MASS  4   POT  39.09830 ! Potassium Ion
 MASS  5   CLA  35.45000 ! Chloride Ion
 
+ANGLES
+!
+!V(angle) = Ktheta(Theta - Theta0)**2
+!
+!V(Urey-Bradley) = Kub(S - S0)**2
+!
+!Ktheta: kcal/mole/rad**2
+!Theta0: degrees
+!Kub: kcal/mole/A**2 (Urey-Bradley)
+!S0: A
+!
+!atom types     Ktheta    Theta0   Kub     S0
+!
+HT   OT   HT     55.0      104.52   ! FROM TIP3P GEOMETRY
+
 BONDS
 !
 !V(bond) = Kb(b - b0)**2
