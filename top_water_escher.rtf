@@ -7,13 +7,24 @@
 !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
 !M.L. Klein; "Comparison of simple potential functions for 
 !simulating liquid water", J. Chem. Phys. 79 926-935 (1983). 
+!
+!IONS
+!
+!Ions from Roux and coworkers
+!
+!Beglov, D. and Roux, B., Finite Representation of an Infinite
+!Bulk System: Solvent Boundary Potential for Computer Simulations,
+!Journal of Chemical Physics, 1994, 100: 9050-9063
 
 default first none last none
 
 MASS  1   HT    1.00800 H  ! TIP3P WATER HYDROGEN
 MASS  2   OT   15.99940 O  ! TIP3P WATER OXYGEN
+MASS  3   SOD  22.98977 NA ! Sodium Ion
+MASS  4   POT  39.09830 K  ! Potassium Ion
+MASS  5   CLA  35.45000 CL ! Chloride Ion
 
-RESI TIP3         0.000 ! tip3p water model, generate using noangle nodihedral
+RESI TIP3         0.000 ! TIP3P water model, generate using noangle nodihedral
 GROUP
 ATOM OH2  OT     -0.834
 ATOM H1   HT      0.417
@@ -24,3 +35,18 @@ DONOR H1 OH2
 DONOR H2 OH2
 ACCEPTOR OH2
 PATCHING FIRS NONE LAST NONE
+
+RESI SOD       1.00 ! Sodium Ion
+GROUP
+ATOM SOD  SOD  1.00
+PATCHING FIRST NONE LAST NONE
+
+RESI POT       1.00 ! Potassium Ion
+GROUP
+ATOM POT   POT 1.00
+PATCHING FIRST NONE LAST NONE
+
+RESI CLA      -1.00 ! Chloride Ion
+GROUP
+ATOM CLA  CLA -1.00
+PATCHING FIRST NONE LAST NONE
