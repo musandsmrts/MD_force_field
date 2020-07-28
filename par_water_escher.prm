@@ -7,12 +7,22 @@
 !W.L. Jorgensen; J.Chandrasekhar; J.D. Madura; R.W. Impey;
 !M.L. Klein; "Comparison of simple potential functions for 
 !simulating liquid water", J. Chem. Phys. 79 926-935 (1983). 
+!
+!IONS
+!
+!Ions from Roux and coworkers
+!
+!Beglov, D. and Roux, B., Finite Representation of an Infinite
+!Bulk System: Solvent Boundary Potential for Computer Simulations,
+!Journal of Chemical Physics, 1994, 100: 9050-9063
 
 ATOMS ! What is the purpose of this label? Is it necessary? Can we include in 
       ! accompanying topology file?
 
 MASS  1   HT    1.00800 ! TIP3P WATER HYDROGEN
 MASS  2   OT   15.99940 ! TIP3P WATER OXYGEN
+MASS  3   SOD  22.98977 ! Sodium Ion
+MASS  4   CLA  35.45000 ! Chloride Ion
 
 BONDS
 !
@@ -36,3 +46,17 @@ NONBONDED
 !TIP3P LJ parameters
 HT       0.0       -0.046     0.2245
 OT       0.0       -0.1521    1.7682
+SOD      0.0       -0.0469    1.41075 ! new CHARMM Sodium 
+                                      ! ddG of -18.6 kcal/mol with K+ from
+                                      ! S. Noskov
+CLA      0.0       -0.150     2.27    ! Chloride
+                                      ! D. Beglovd and B. Roux,
+                                      ! dA=-83.87+4.46 = -79.40 kcal/mol
+
+NBFIX
+!              Emin         Rmin
+!            (kcal/mol)     (A)
+SOD    CLA      -0.083875   3.731 ! From osmotic pressure calibration,
+                                  ! J. Phys.Chem.Lett. 1:183-189
+POT    CLA      -0.114236   4.081 ! From osmotic pressure calibration,
+                                  ! J. Phys.Chem.Lett. 1:183-189
