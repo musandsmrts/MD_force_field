@@ -22,7 +22,8 @@ ATOMS ! What is the purpose of this label? Is it necessary? Can we include in
 MASS  1   HT    1.00800 ! TIP3P WATER HYDROGEN
 MASS  2   OT   15.99940 ! TIP3P WATER OXYGEN
 MASS  3   SOD  22.98977 ! Sodium Ion
-MASS  4   CLA  35.45000 ! Chloride Ion
+MASS  4   POT  39.09830 ! Potassium Ion
+MASS  5   CLA  35.45000 ! Chloride Ion
 
 BONDS
 !
@@ -49,6 +50,9 @@ OT       0.0       -0.1521    1.7682
 SOD      0.0       -0.0469    1.41075 ! new CHARMM Sodium 
                                       ! ddG of -18.6 kcal/mol with K+ from
                                       ! S. Noskov
+POT      0.0       -0.0870    1.76375 ! Potassium
+                                      ! D. Beglovd and B. Roux,
+                                      ! dA=-82.36+2.8 = -79.56 kca/mol
 CLA      0.0       -0.150     2.27    ! Chloride
                                       ! D. Beglovd and B. Roux,
                                       ! dA=-83.87+4.46 = -79.40 kcal/mol
