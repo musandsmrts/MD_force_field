@@ -8,6 +8,12 @@
 !M.L. Klein; "Comparison of simple potential functions for 
 !simulating liquid water", J. Chem. Phys. 79 926-935 (1983). 
 !
+!SPC/E water model 
+!
+!J. Wu, H.L. Tepper, & G.A. Voth. "Flexible simple point-
+!charge water model with improved liquid-state properties."
+!J. Phys. Chem. 128, (2006): 1-12. 
+!
 !IONS
 !
 !Ions from Roux and coworkers
@@ -23,18 +29,38 @@ MASS  2   OT   15.99940 O  ! TIP3P WATER OXYGEN
 MASS  3   SOD  22.98977 NA ! Sodium Ion
 MASS  4   POT  39.09830 K  ! Potassium Ion
 MASS  5   CLA  35.45000 CL ! Chloride Ion
+MASS  6   HS    1.00800 H  ! SPC/E WATER HYDROGEN
+MASS  7   OS   15.99940 O  ! SPC/E WATER OXYGEN
+
+! Water Models
 
 RESI TIP3         0.000 ! TIP3P water model, generate using noangle nodihedral
 GROUP
 ATOM OH2  OT     -0.834
 ATOM H1   HT      0.417
 ATOM H2   HT      0.417
-BOND OH2 H1 OH2 H2 H1 H2    ! the last bond is needed for shake
+!BOND OH2 H1 OH2 H2 H1 H2   ! the last bond is needed for shake
+BOND OH2 H1 OH2 H2          ! 'H1-H2 not required for NAMD' - EJS 20200807-0026
 ANGLE H1 OH2 H2             ! required
 DONOR H1 OH2
 DONOR H2 OH2
 ACCEPTOR OH2
 PATCHING FIRS NONE LAST NONE
+
+RESI SPCE         0.000 ! SPC/E water model, generate using noangle nodihedral
+GROUP
+ATOM OH2  OS     -0.8476
+ATOM H1   HS      0.4238
+ATOM H2   HS      0.4238
+!BOND OH2 H1 OH2 H2 H1 H2   ! the last bond is needed for shake
+BOND OH2 H1 OH2 H2          ! 'H1-H2 not required for NAMD' - EJS 20200807-0026
+ANGLE H1 OH2 H2             ! required
+DONOR H1 OH2
+DONOR H2 OH2
+ACCEPTOR OH2
+PATCHING FIRS NONE LAST NONE
+
+! IONS
 
 RESI SOD       1.00 ! Sodium Ion
 GROUP
