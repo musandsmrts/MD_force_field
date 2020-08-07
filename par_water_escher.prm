@@ -8,6 +8,12 @@
 !M.L. Klein; "Comparison of simple potential functions for 
 !simulating liquid water", J. Chem. Phys. 79 926-935 (1983). 
 !
+!SPC/E water model 
+!
+!J. Wu, H.L. Tepper, & G.A. Voth. "Flexible simple point-
+!charge water model with improved liquid-state properties."
+!J. Phys. Chem. 128, (2006): 1-12. 
+!
 !IONS
 !
 !Ions from Roux and coworkers
@@ -24,6 +30,8 @@ MASS  2   OT   15.99940 ! TIP3P WATER OXYGEN
 MASS  3   SOD  22.98977 ! Sodium Ion
 MASS  4   POT  39.09830 ! Potassium Ion
 MASS  5   CLA  35.45000 ! Chloride Ion
+MASS  6   HS    1.00800 ! SPC/E WATER HYDROGEN
+MASS  7   OS   15.99940 ! SPC/E WATER OXYGEN
 
 ANGLES
 !
@@ -39,6 +47,7 @@ ANGLES
 !atom types     Ktheta    Theta0   Kub     S0
 !
 HT   OT   HT     55.0      104.52   ! FROM TIP3P GEOMETRY
+HS   OS   HS     55.0      109.47   ! FROM SPC/E GEOMETRY
 
 BONDS
 !
@@ -51,6 +60,10 @@ BONDS
 !
 HT    HT      0.0       1.5139  ! from TIP3P geometry (for SHAKE w/PARAM)
 HT    OT    450.0       0.9572  ! from TIP3P geometry
+HS    HS      0.0       1.5139  ! (for SHAKE w/PARAM)
+HS    OS    450.0       1.0000  ! 'Force constant isn't used when simulating
+                                !  with rigid bonds. The SPC/E force constant
+                                !  is a copy of TIP3P' - EJS 20200807-0017 CST
 
 NONBONDED
 !
@@ -62,6 +75,8 @@ NONBONDED
 !TIP3P LJ parameters
 HT       0.0       -0.046     0.2245
 OT       0.0       -0.1521    1.7682
+HS       0.0       -0.000     0.0000  ! SPC/E, no hydrogen LJ term
+OS       0.0       -0.155425  1.77683 ! SPC/E 
 SOD      0.0       -0.0469    1.41075 ! new CHARMM Sodium 
                                       ! ddG of -18.6 kcal/mol with K+ from
                                       ! S. Noskov
